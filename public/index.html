@@ -9,9 +9,9 @@
 		<li> {{item}}</li>
 	</ul>
 
-	<form name="userform" ng-click="formsubmit($event)">
-		<input type="text" ng-model="usermsg" name="text">
-		<input type="submit" id="submit" value="Submit">
+	<form name="userform" ng-submit="formsubmit($event)">
+		<input type="text" ng-model="usermsg" name="text" required  ng-minlength="1" />
+		<input type="submit" id="submit" value="Submit"/>
 	</form>
 
 	<script src="js/jquery-2.2.0.min.js"></script>

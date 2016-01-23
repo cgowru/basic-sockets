@@ -12,14 +12,16 @@ angular
 		socket.on('connect',function(data){
 			console.log('Client Connected to Server');
 		});
+		
 
 		socket.on('message',function(data){
-			$scope.items.push(data.text);
-			$scope.$digest();
+			$scope.$apply(function(){
+				$scope.items.push(data.text);	
+			});
 		});
 
 		$scope.formsubmit = function ($event){
-			$event.preventDefault()
+			$event.preventDefault();
 
 			socket.emit('message',{
 				text: $scope.usermsg
