@@ -4,13 +4,13 @@ var moment =  require('moment');
 var now = moment();
 
 // basic time stamp
-console.log(now.format());
+console.log("moment js date : "+now.format());
 
 // First arg is a String
 // visit moment js for this format String
-console.log(now.format('h:mm a'));
+console.log('moment js formated time : '+now.format('h:mm a'));
 
-console.log(now.subtract(1,'year').format('MMM Do YYYY, h:mm a -- X -- x'));	
+console.log('moment js time in seconds -- millis: '+now.format('X -- x'));	
 
 
 var timestamp = now.valueOf();
