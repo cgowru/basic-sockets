@@ -3,10 +3,6 @@ angular
 .factory('$soc',function(){
 	var socket = io();
 
-	socket.on('connect',function(data){
-		console.log('Client Connected to Server');
-	});
-
 	return socket;
 })
 .factory('shareable',function(){
@@ -27,23 +23,28 @@ angular
 	});
 })
 .controller('loginCtrl',[
-	'$scope','$window','$soc','shareable',
-	function($scope,$window,socket,shareable
+	'$scope','$window','$soc','shareable','$q',
+	function($scope,$window,socket,shareable,$q
 		) {
 		$scope.user={};
 
+		socket.on('connect',function(data){
+			console.log('Client Conzanected to Server');
+		});
+
 		$scope.signinsubmit = function ($event){
 			$event.preventDefault();
+				socket.on('user',function(user){
+					shareable.users.push(user);
+					console.log(user);
+				});
 
-			socket.emit('user',{
-				timestamp : moment().valueOf(),
-				username: $scope.user.name
-			});
-
-			socket.on('user',function(user){
-				shareable.users.push(user);
-			})
-			$window.location.href='/#chat';			
+				socket.emit('user',{
+					timestamp : moment().valueOf(),
+					username: $scope.user.name,
+					room : $scope.user.room
+				});
+				$window.location.href='/#chat';			
 		}
 	}
 ])
