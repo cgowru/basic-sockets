@@ -1,4 +1,6 @@
 var PORT = process.env.PORT || 3000;
+var moment = require('moment');
+
 var express = require('express');
 var app = express();
 
@@ -10,7 +12,20 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection',function(socket) {
 
 	socket.emit('message',{
-		text:'Welcome'
+		text:'Welcome',
+		timestamp : moment().valueOf(),
+		username:socket.username
+	})
+
+	socket.emit('user',{
+		text:'Welcome',
+		timestamp : moment().valueOf(),
+		username:socket.username
+	})
+
+	socket.on('user',function(data){
+		console.log(data.text,data.username);
+		io.emit('user',data);
 	})
 	
 	socket.on('message',function(data){
