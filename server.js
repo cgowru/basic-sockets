@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3100;
 var moment = require('moment');
 
 var express = require('express');
