@@ -16,7 +16,7 @@ var clientInfo =[
 
 
 
-
+/* io listens on a connection Event and the corresponding callback function is invoked */
 io.on('connection',function(socket) {
 
 	socket.on('user',function(user){
