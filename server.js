@@ -4,7 +4,7 @@ var moment = require('moment');
 var express = require('express');
 var app = express();
 
-var http = require('http').Server(app);
+var http = require('http').Server(app); // Added Server comment
 var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
