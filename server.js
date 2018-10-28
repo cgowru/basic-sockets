@@ -3,12 +3,10 @@ var moment = require('moment');
 
 var express = require('express');
 var app = express();
-
 var http = require('http').Server(app); // Added Server comment
 var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
-
 
 var clientInfo =[
 
@@ -16,7 +14,7 @@ var clientInfo =[
 
 
 
-/* io listens on a connection Event and the corresponding callback function is invoked */
+/* io listens on a connection Event & corresponding callback function is invoked */
 io.on('connection',function(socket) {
 
 	socket.on('user',function(user){
