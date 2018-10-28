@@ -9,7 +9,7 @@ var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
 
-
+// Hello
 var clientInfo =[
 
 ];
